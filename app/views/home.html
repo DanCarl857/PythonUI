@@ -1,7 +1,7 @@
 <!-- Add your site or application content here -->
-<div style="width: 90%; position: relative; left: 4%;">
+<div>
   <div class="header">
-    <div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar navbar-default" role="navigation">
       <div>
         <div class="navbar-header">
 
@@ -25,162 +25,182 @@
         </div>
       </div>
     </div>
-    <section>
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel1">
-            <option>Daniel</option>
-            <option>Kevin</option>
-            <option>Acceptado</option>
-            <option>Work</option>
-          </select>
-        </div>
-        <div class="col-sm-3">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel2">
-            <option>Daniel</option>
-            <option>Kevin</option>
-            <option>Acceptado</option>
-            <option>Work</option>
-          </select>
-        </div>
-        <div class="col-sm-3">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel3">
-            <option>Daniel</option>
-            <option>Kevin</option>
-            <option>Acceptado</option>
-            <option>Work</option>
-          </select>
-        </div>
-        <div class="col-sm-3">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel4">
-            <option>Daniel</option>
-            <option>Kevin</option>
-            <option>Acceptado</option>
-            <option>Work</option>
-          </select>
-        </div>
-      </div>
-    </section>
-    <br><hr>
-    <section>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="form-group">
-            <input type="text" class="form-control" id="usr" placeholder="Filter By Number">
+    <div style="width: 90%; position: relative; left: 4%;">
+      <section>
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="sel1">Select list:</label>
+            <select class="form-control" id="sel1">
+              <option>Daniel</option>
+              <option>Kevin</option>
+              <option>Acceptado</option>
+              <option>Work</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <label for="sel1">Select list:</label>
+            <select class="form-control" id="sel2">
+              <option>Daniel</option>
+              <option>Kevin</option>
+              <option>Acceptado</option>
+              <option>Work</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <label for="sel1">Select list:</label>
+            <select class="form-control" id="sel3">
+              <option>Daniel</option>
+              <option>Kevin</option>
+              <option>Acceptado</option>
+              <option>Work</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <label for="sel1">Select list:</label>
+            <select class="form-control" id="sel4">
+              <option>Daniel</option>
+              <option>Kevin</option>
+              <option>Acceptado</option>
+              <option>Work</option>
+            </select>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <input type="text" class="form-control" id="usr" placeholder="Filter By Number">
+      </section>
+      <br><hr>
+      <section>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <input type="text" class="form-control" id="usr" placeholder="Filter By Modelo">
+            </div>
           </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <input type="text" class="form-control" id="usr" placeholder="Filter By Number">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <input type="text" class="form-control" id="usr" placeholder="Filter By Campo">
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="row" style="padding: 10px; position: relative; left: 4%;">
-        <div class="col-sm-4">
-          <button type="button" class="btn btn-success">ACCEPT
-          </button>
-        </div>
-        <div class="col-sm-4">
-          <button type="button" class="btn btn-danger">REJECT
-          </button>
-        </div>
-        <div class="col-sm-4">
-          <button type="button" class="btn btn-primary">IGNORE
-          </button>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <center>
-              <h3 class="panel-title">All Filtered Data</h3>
-            </center>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <input type="text" class="form-control" id="usr" placeholder="Filter By Target">
+            </div>
           </div>
-          <div class="panel-body">
-            <div class="list-group">
-              <button type="button" class="list-group-item">Cras justo odio</button>
-              <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-              <button type="button" class="list-group-item">Morbi leo risus</button>
-              <button type="button" class="list-group-item">Porta ac consectetur ac</button>
-              <button type="button" class="list-group-item">Vestibulum at eros</button>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <input type="text" class="form-control" id="usr" placeholder="Filter By TimeStamp">
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section>
-      <div class="centered">
+      </section>
+      <section>
         <div class="row" style="padding: 10px; position: relative; left: 4%;">
           <div class="col-sm-4">
-            <a href="" style="color: green; font-size: 20px;">Commit Changes</a>
+            <button type="button" class="btn btn-success">
+              ACCEPT&nbsp;
+              <i style="font-size: 20px; color: white" class="icon ion-ios-redo"></i>
+            </button>
           </div>
           <div class="col-sm-4">
-            <a href="" style="color: indianred; font-size: 20px;">Discard Changes</a>
+            <button type="button" class="btn btn-danger">
+              REJECT&nbsp;
+              <i style="font-size: 20px; color: white" class="icon ion-android-close"></i>
+            </button>
           </div>
           <div class="col-sm-4">
-            <a href="" style="color: dodgerblue; font-size: 20px;">Ignore All</a>
+            <button type="button" class="btn btn-primary">
+              IGNORE&nbsp;
+              <i style="font-size: 25px; color: white" class="icon ion-ios-trash-outline"></i>
+            </button>
           </div>
         </div>
-      </div>
-    </section>
-    <br>
-    <section>
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <center>
-            <h3 class="panel-title">All Accepted Data</h3>
-          </center>
-        </div>
-        <div class="panel-body">
-          <div class="list-group centered">
-            <button type="button" class="list-group-item">Cras justo odio</button>
-            <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-            <button type="button" class="list-group-item">Morbi leo risus</button>
+      </section>
+      <section>
+        <div class="row">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <center>
+                <h3 class="panel-title">All Filtered Data</h3>
+              </center>
+            </div>
+            <div class="panel-body">
+              <div class="list-group">
+                <button type="button" class="list-group-item">Cras justo odio</button>
+                <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+                <button type="button" class="list-group-item">Morbi leo risus</button>
+                <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+                <button type="button" class="list-group-item">Vestibulum at eros</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section>
-      <div class="row centered" style="padding: 10px; position: relative; left: 45%;">
-        <div class="col-sm-4">
-          <a href="" style="color: dodgerblue; font-size: 20px;">UNDO</a>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="panel panel-danger">
-        <div class="panel-heading">
-          <center>
-            <h3 class="panel-title">All Rejected Data</h3>
-          </center>
-        </div>
-        <div class="panel-body">
-          <div class="list-group centered">
-            <button type="button" class="list-group-item">Cras justo odio</button>
-            <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+      </section>
+      <section>
+        <div class="centered">
+          <div class="row" style="padding: 10px; position: relative; left: 4%;">
+            <div class="col-sm-4">
+              <a href="" style="color: green; font-size: 20px;">Commit Changes</a>
+              &nbsp;
+              <i style="font-size: 20px; color: green" class="icon ion-ios-redo"></i>
+            </div>
+            <div class="col-sm-4">
+              <a href="" style="color: indianred; font-size: 20px;">Discard Changes</a>
+              &nbsp;
+              <i style="font-size: 20px; color: indianred" class="icon ion-android-close"></i>
+            </div>
+            <div class="col-sm-4">
+              <a href="" style="color: dodgerblue; font-size: 20px;">Ignore All</a>&nbsp;
+              <i style="font-size: 25px; color: dodgerblue" class="icon ion-ios-trash-outline"></i>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section>
-      <div class="row centered" style="padding: 10px; position: relative; left: 45%;">
-        <div class="col-sm-4">
-          <a href="" style="color: dodgerblue; font-size: 20px;">UNDO</a>
+      </section>
+      <br>
+      <section>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <center>
+              <h3 class="panel-title">All Accepted Data</h3>
+            </center>
+          </div>
+          <div class="panel-body">
+            <div class="list-group centered">
+              <button type="button" class="list-group-item">Cras justo odio</button>
+              <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+              <button type="button" class="list-group-item">Morbi leo risus</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section>
+        <div class="row centered" style="padding: 10px; position: relative; left: 45%;">
+          <div class="col-sm-4">
+            <i style="font-size: 25px; color: dodgerblue" class="icon ion-reply"></i>
+            <a href="" style="color: dodgerblue; font-size: 20px;">UNDO</a>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <center>
+              <h3 class="panel-title">All Rejected Data</h3>
+            </center>
+          </div>
+          <div class="panel-body">
+            <div class="list-group centered">
+              <button type="button" class="list-group-item">Cras justo odio</button>
+              <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="row centered" style="padding: 10px; position: relative; left: 45%;">
+          <div class="col-sm-4">
+            <i style="font-size: 25px; color: dodgerblue" class="icon ion-reply"></i>
+            <a href="" style="color: dodgerblue; font-size: 20px;">UNDO</a>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </div>
