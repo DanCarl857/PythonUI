@@ -1,43 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Simple UI</title>
-	<meta charset="utf-8" name="viewport" content="width=device-width" author="Daniel Carlson" email="dancarl758@gmail.com">
+{% extends "base.html" %}
 
-	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'ui/css/libs/bootstrap.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'ui/css/libs/ionicons.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'ui/css/main.css' %}" />
+{% block title %}Simple UI {% endblock %}
 
-</head>
-<body>
-	<div>
-  <div class="header">
-    <div class="navbar navbar-default" role="navigation">
-      <div>
-        <div class="navbar-header">
-
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-          <a class="navbar-brand" href="#/">Logo Here</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#/">Home</a></li>
-            <li><a ng-href="#/">About</a></li>
-            <li><a ng-href="#/">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div style="width: 90%; position: relative; left: 4%;">
+{% block content %}
+<div style="width: 90%; position: relative; left: 4%;">
       <section>
         <div class="row">
           <div class="col-sm-3">
@@ -142,9 +108,11 @@
                   <th>Vendedor</th>
                   <th>Producto</th>
                   <th>Des Marca</th>
+                  <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
+                {% for obj in objects %}
                 <tr>
                   <td scope="row">
                     <div class="checkbox">
@@ -153,13 +121,16 @@
                       </label>
                     </div>
                   </td>
-                  <td>Pablo</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <td>{{ obj.des_empresa}}</td>
+                  <td>{{ obj.vendedor }}</td>
+                  <td>{{ obj.producto }}</td>
+                  <td>{{ obj.des_marca }}</td>
                   <td>
                     <button class="btn btn-warning">Waiting..</button>
                   </td>
                 </tr>
+                {% endfor %}
+                <!--
                 <tr>
                   <td scope="row">
                     <div class="checkbox">
@@ -189,7 +160,7 @@
                   <td>
                     <button class="btn btn-warning">Waiting..</button>
                   </td>
-                </tr>
+                </tr> -->
                 </tbody>
               </table>
             </div>
@@ -327,8 +298,5 @@
         </div>
       </section>
     </div>
-  </div>
-</div>
 
-</body>
-</html>
+{% endblock %}

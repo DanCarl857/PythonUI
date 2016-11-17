@@ -10,9 +10,6 @@ from django.db import models
 #   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
-from django.db import models
-
-
 class Table1(models.Model):
     id_modelo = models.IntegerField(blank=True, null=True)
     vendedor = models.IntegerField(blank=True, null=True)
@@ -39,11 +36,14 @@ class Table1(models.Model):
     timestamp = models.CharField(max_length=20, blank=True, null=True)
     features = models.CharField(max_length=8, blank=True, null=True)
     modelo = models.CharField(max_length=16, blank=True, null=True)
-    status = models.CharField(db_column='Status', max_length=7, blank=True, null=True)  # Field name made lowercase.
-
+    status = models.CharField(db_column='Status', max_length=7, blank=True, null=True)  
+    
     class Meta:
         managed = False
         db_table = 'TABLE 1'
+
+    def __str__(self):
+        return self.producto
 
 
 class DjangoMigrations(models.Model):
