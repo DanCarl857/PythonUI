@@ -11,7 +11,7 @@ from django.db import models
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 class Table1(models.Model):
-    id_modelo = models.IntegerField(blank=True, null=True)
+    id_modelo = models.IntegerField(blank=True, primary_key=True)
     vendedor = models.IntegerField(blank=True, null=True)
     nid = models.IntegerField(blank=True, null=True)
     gondola = models.CharField(max_length=64, blank=True, null=True)
@@ -37,7 +37,7 @@ class Table1(models.Model):
     features = models.CharField(max_length=8, blank=True, null=True)
     modelo = models.CharField(max_length=16, blank=True, null=True)
     status = models.CharField(db_column='Status', max_length=7, blank=True, null=True)  
-    
+
     class Meta:
         managed = False
         db_table = 'TABLE 1'
