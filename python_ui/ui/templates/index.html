@@ -97,7 +97,7 @@
       <section>
         <div class="row" style="padding: 10px; position: relative; left: 4%;">
           <div class="col-sm-4">
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" onclick="getAllCheckBoxes()">
               ACCEPT&nbsp;
               <i style="font-size: 20px; color: white" class="icon ion-ios-redo"></i>
             </button>
@@ -139,10 +139,10 @@
                 <tbody>
                 {% for obj in query_results %}
                 <tr>
-                  <td scope="row">
+                  <td scope="row" id="res_check">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox">
+                        <input name="accepted_values" value={{ obj.id_modelo }} type="checkbox">
                       </label>
                     </div>
                   </td>
@@ -312,4 +312,33 @@
       </section>
     </div>
 
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+  function getAllCheckBoxes(){
+
+    var acceptedVals = [];
+
+    $("input[name='accepted_values']:checked").each(function(){
+      acceptedVals.push($(this).val());
+    });
+
+    var accepted_vals = JSON.stringify(acceptedVals);
+
+    /*
+    $.ajax({
+      url: '{% url "processing_view" %}',
+      data: accepted_vals,
+      dataType: 'json',
+      success: function(data){
+
+      }
+    });
+    */
+
+  }
+
+</script>
 {% endblock %}

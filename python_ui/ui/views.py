@@ -9,6 +9,12 @@ class HomePageView(TemplateView):
 	
 	def get(self, request, **kwargs):
 		query_results = Table1.objects.all()
+		data = Table1._meta.get_fields()
+
+		fields = []
+		for dat in data:
+			fields.append(dat.name)
+
 		paginator = Paginator(query_results, 10)
 
 		page = request.GET.get('page')
@@ -21,5 +27,10 @@ class HomePageView(TemplateView):
 
 		return render_to_response('index.html', locals())
 
+def processing_view(request):
+	chosen_vals = request.POST.getlist('accepted_values')
+	print chosen_vals
+
+	
 class AboutPageView(TemplateView):
 	template_name = "about.html"
