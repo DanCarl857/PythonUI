@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ui',
+    'corsheaders',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+  '127.0.0.1:8000',
+)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'compilado',
         'USER': 'root',
-        'PASSWORD': '@@Admin123',
+        'PASSWORD': 'mysql',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }

@@ -27,10 +27,40 @@ class HomePageView(TemplateView):
 
 		return render_to_response('index.html', locals())
 
-def processing_view(request):
-	chosen_vals = request.POST.getlist('accepted_values')
-	print chosen_vals
+class ProcessPageview(TemplateView):
 
-	
+	def get(self, request, **kwargs):
+		results = []
+		ids = []
+		real_ids = []
+
+		accepted_vals = request.GET['vals']
+		token = request.GET['id']
+
+		# parse request parameters
+		phr = str(accepted_vals)
+		sent = phr.split(',')
+		for send in range(len(sent)):
+			if send == 0:
+				ids.append((sent[send])[1:])
+				continue
+			elif send == len(sent) - 1:
+				ids.append((sent[send])[:len(sent[send])-1])
+				continue
+			ids.append(sent[send])
+		
+		for i in range(len(ids)):
+			real_ids.append(eval(ids[i]))
+		
+		for j in range(len(real_ids)):
+			results.append(Table1.objects.get(pk=real_ids[j]))
+
+		print results
+
+		return render_to_response('index.html', {
+			'results': results
+		})
+
+
 class AboutPageView(TemplateView):
 	template_name = "about.html"

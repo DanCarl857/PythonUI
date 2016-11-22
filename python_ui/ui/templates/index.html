@@ -218,38 +218,39 @@
             </center>
           </div>
           <div class="panel-body">
-            <table class="table table-hover">
-              <thead class="thead-inverse">
-              <tr>
-                <th>#</th>
-                <th>Des Empresa</th>
-                <th>Vendedor</th>
-                <th>Producto</th>
-                <th>Des Marca</th>
-              </tr>
-              </thead>
-              <tbody>
-               {% for obj in acc_objects %}
+              <table class="table table-hover">
+                <thead class="thead-inverse">
                 <tr>
-                  <td scope="row">
+                  <th>#</th>
+                  <th>Des Empresa</th>
+                  <th>Vendedor</th>
+                  <th>Producto</th>
+                  <th>Des Marca</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for res in results %}
+                <tr>
+                  <td scope="row" id="res_check">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox">
+                        <input name="acc_values" value={{ res.id_modelo }} type="checkbox">
                       </label>
                     </div>
                   </td>
-                  <td>{{ obj.des_empresa}}</td>
-                  <td>{{ obj.vendedor }}</td>
-                  <td>{{ obj.producto }}</td>
-                  <td>{{ obj.des_marca }}</td>
+                  <td>{{ res.des_empresa}}</td>
+                  <td>{{ res.vendedor }}</td>
+                  <td>{{ res.producto }}</td>
+                  <td>{{ res.des_marca }}</td>
                   <td>
                     <button class="btn btn-success">Accepted</button>
                   </td>
                 </tr>
                 {% endfor %}
-              </tbody>
-            </table>
-          </div>
+                </tbody>
+              </table>
+            </div>
         </div>
       </section>
       <section>
@@ -327,17 +328,34 @@
 
     var accepted_vals = JSON.stringify(acceptedVals);
 
-    /*
     $.ajax({
-      url: '{% url "processing_view" %}',
+      url: 'http://localhost:8000?vals=' + accepted_vals + '&id=1',
       data: accepted_vals,
       dataType: 'json',
       success: function(data){
 
       }
     });
-    */
+  }
 
+  function getRejectedBoxes() {
+
+     var rejectedVals = [];
+
+     $("input[name='accepted_values']:checked").each(function(){
+      rejectedVals.push($(this).val());
+     });
+
+     var rejected_vals = JSON.stringify(rejectedVals);
+
+     $.ajax({
+      url: 'http://localhost:8000/process',
+      data: rejected_vals,
+      dataType: 'json',
+      success: function(data){
+
+      }
+     });
   }
 
 </script>
