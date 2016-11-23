@@ -12,16 +12,12 @@
     $.ajax({
       url: 'http://localhost:8000/accept?vals=' + accepted_vals + '&id=1',
       data: accepted_vals,
-      dataType: 'json',
+      dataType: 'html',
+      method:'get',
       success: function(data){
+        location.reload();
       }
     });
-
-    console.log("In this function now man");
-    setTimeout(function(){
-      location.reload();
-    }, 10000);
-    
   }
 
   // PLEASE IGNORE REDUNDANCY.... :-)
@@ -38,9 +34,10 @@
      $.ajax({
       url: 'http://localhost:8000/reject?vals=' + rejected_vals + '&id=2',
       data: rejected_vals,
-      dataType: 'json',
+      dataType: 'html',
+      method: 'get',
       success: function(data){
-
+        location.reload();
       }
      });
   }
@@ -60,9 +57,10 @@
     $.ajax({
       url: 'http://localhost:8000/undo?vals=' + check_vals,
       data: check_vals,
-      dataType: 'json',
+      dataType: 'html',
+      method: 'get',
       success: function(data){
-
+        location.reload();
       }
     });
   }
@@ -80,9 +78,9 @@
     $.ajax({
       url: 'http://localhost:8000/undo?vals=' + rejected_vals,
       data: rejected_vals,
-      dataType: 'json',
+      dataType: 'html',
       success: function(data){
-
+        location.reload();
       }
     });
   }
@@ -137,25 +135,16 @@
 
   }
 
-/*
-  $("#empresa").on("keyup", function() {
-    var value = $(this).val();
 
-    $("table tr").each(function(index) {
-        if (index != 0) {
-
-            $row = $(this);
-
-            var id = $row.find("td:first").text();
-
-            if (id.indexOf(value) != 0) {
-                $(this).hide();
-            }
-            else {
-                $(this).show();
-            }
-        }
-    });
-});​
-*/
+function filterTable(tclass, that){
+  console.log(that.value);
+  $("table tr ."+ tclass).each(function(){
+    var text = $(this).text();
+    if(text.toLowerCase().indexOf(that.value.toLowerCase())<0 ){
+      $(this).parent('tr').hide();
+    }else{
+      $(this).parent('tr').show();
+    }
+  });
+}
   

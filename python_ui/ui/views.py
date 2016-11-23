@@ -47,24 +47,24 @@ class HomePageView(TemplateView):
 			fields.append(dat.name)
 
 		paginator = Paginator(query_results, 10)
-		acc_paginator = Paginator(accepted_results, 10)
-		rej_paginator = Paginator(rejected_results, 10)
+		# acc_paginator = Paginator(accepted_results, 10)
+		# rej_paginator = Paginator(rejected_results, 10)
 
 		page = request.GET.get('page')
-		page1 = request.GET.get('page')
-		page2 = request.GET.get('page')
+		#page1 = request.GET.get('page')
+		#page2 = request.GET.get('page')
 		try: 
 			query_results = paginator.page(page)
-			accepted_results = acc_paginator.page(page1)
-			rejected_results = rej_paginator.page(page2)
+			#accepted_results = acc_paginator.page(page1)
+			#rejected_results = rej_paginator.page(page2)
 		except PageNotAnInteger:
 			query_results = paginator.page(1)
-			accepted_results = acc_paginator.page(1)
-			rejected_results = rej_paginator.page(1)
+			#accepted_results = acc_paginator.page(1)
+			#rejected_results = rej_paginator.page(1)
 		except EmptyPage: 
 			query_results = paginator.page(paginator.num_pages)
-			accepted_results = acc_paginator.page(acc_paginator.num_pages)
-			rejected_results = rej_paginator.page(rej_paginator.num_pages)
+			#accepted_results = acc_paginator.page(acc_paginator.num_pages)
+			#rejected_results = rej_paginator.page(rej_paginator.num_pages)
 
 		return render_to_response('index.html', locals())
 

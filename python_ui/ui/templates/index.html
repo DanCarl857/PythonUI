@@ -34,9 +34,10 @@
         <div class="row">
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
-            <select class="form-control" id="sel1">
+            <select class="form-control" onchange="filterTable('des',this)" id="sel1">
+              <option disabled="" selected=""> Filter by Des Emp</option>
               <option>Daniel</option>
-              <option>Kevin</option>
+              <option value="MONDELEZ">MONDELEZ</option>
               <option>Acceptado</option>
               <option>Work</option>
             </select>
@@ -75,22 +76,22 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group">
-              <input type="text" class="form-control" id="empresa" placeholder="Filter By Des Empresa">
+              <input type="text" class="form-control" onkeyup="filterTable('des',this)" id="empresa" placeholder="Filter By Des Empresa">
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              <input type="text" class="form-control" id="usr" placeholder="Filter By Vendedor">
+              <input type="text" class="form-control" onkeyup="filterTable('vendedor',this)" id="usr" placeholder="Filter By Vendedor">
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              <input type="text" class="form-control" id="usr" placeholder="Filter By Producto">
+              <input type="text" class="form-control" onkeyup="filterTable('producto', this)" id="usr" placeholder="Filter By Producto">
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              <input type="text" class="form-control" id="usr" placeholder="Filter By Des Marca">
+              <input type="text" class="form-control" onkeyup="filterTable('marca', this)" id="usr" placeholder="Filter By Des Marca">
             </div>
           </div>
         </div>
@@ -147,10 +148,10 @@
                       </label>
                     </div>
                   </td>
-                  <td>{{ obj.des_empresa}}</td>
-                  <td>{{ obj.vendedor }}</td>
-                  <td>{{ obj.producto }}</td>
-                  <td>{{ obj.des_marca }}</td>
+                  <td class="des">{{ obj.des_empresa}}</td>
+                  <td class="vendedor">{{ obj.vendedor }}</td>
+                  <td class="producto">{{ obj.producto }}</td>
+                  <td class="marca">{{ obj.des_marca }}</td>
                   <td>
                     <button class="btn btn-warning">Waiting..</button>
                   </td>
