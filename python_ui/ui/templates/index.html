@@ -35,7 +35,7 @@
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
             <select class="form-control" onchange="filterTable('des',this)" id="sel1">
-              <option disabled="" selected=""> Filter by Des Emp</option>
+              <option disabled="" selected=""> Filter by Des Emperesa</option>
               <option>Daniel</option>
               <option value="MONDELEZ">MONDELEZ</option>
               <option>Acceptado</option>
@@ -45,6 +45,7 @@
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
             <select class="form-control" id="sel2">
+              <option disabled="" selected=""> Filter by Vendedor</option>
               <option>Daniel</option>
               <option>Kevin</option>
               <option>Acceptado</option>
@@ -54,6 +55,7 @@
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
             <select class="form-control" id="sel3">
+              <option disabled="" selected=""> Filter by Producto</option>
               <option>Daniel</option>
               <option>Kevin</option>
               <option>Acceptado</option>
@@ -63,6 +65,7 @@
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
             <select class="form-control" id="sel4">
+              <option disabled="" selected=""> Filter by Des Marca</option>
               <option>Daniel</option>
               <option>Kevin</option>
               <option>Acceptado</option>
@@ -111,7 +114,7 @@
             </button>
           </div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-primary" onclick="ignoreAll()">
+            <button type="button" class="btn btn-primary" onclick="confirmReq()">
               IGNORE&nbsp;
               <i style="font-size: 25px; color: white" class="icon ion-ios-trash-outline"></i>
             </button>
@@ -414,5 +417,27 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="deleteModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Are you sure?</h4>
+          </div>
+          <div class="modal-body">
+            <center>
+            
+            <p>Completing this action deletes this row completely.</p>
+            <p style="color: rgba(200, 0, 0, 0.6);">This action is irreversible!!</p>
+            
+          </center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger pull-right" onclick="ignoreAll()">Proceed</button>
+            <button type="button" class="btn btn-warning pull-left" onclick="reloadPage()" data-dismiss="modal">Cancel</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 {% endblock %}

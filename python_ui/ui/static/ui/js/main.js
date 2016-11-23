@@ -55,6 +55,10 @@
   }
 
   function undoAccept(){
+    $('#genericModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
 
     var checkVals = [];
 
@@ -72,12 +76,17 @@
       dataType: 'html',
       method: 'get',
       success: function(data){
+        $('#genericModal').modal('hide');
         location.reload();
       }
     });
   }
 
   function undoRej(){
+    $('#genericModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
 
     var cheVals = [];
 
@@ -92,6 +101,7 @@
       data: rejected_vals,
       dataType: 'html',
       success: function(data){
+        $('#genericModal').modal('hide');
         location.reload();
       }
     });
@@ -144,6 +154,7 @@
   }
 
   function ignoreAll(){
+     $('#deleteModal').modal('hide');
      $('#genericModal').modal({
         backdrop: 'static',
         keyboard: false
@@ -167,6 +178,18 @@
       }
      });
 
+  }
+
+  function confirmReq(){
+    $('#deleteModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+  }
+
+  function reloadPage(){
+    $('#deleteModal').modal('hide');
+    location.reload();
   }
 
 
