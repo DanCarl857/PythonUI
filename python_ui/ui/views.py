@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 
-from .models import Table1
+from .models import ModelosResultados
 
 # utility functions
 def rudimentaryParser(values):
@@ -35,11 +35,11 @@ def rudimentaryParser(values):
 class HomePageView(TemplateView):
 	
 	def get(self, request, **kwargs):
-		# query_results = Table1.objects.all()
-		query_results = Table1.objects.filter(status='Waiting')
-		accepted_results = Table1.objects.filter(status='Accept')
-		rejected_results = Table1.objects.filter(status='Reject')
-		data = Table1._meta.get_fields()
+		# query_results = ModelosResultados.objects.all()
+		query_results = ModelosResultados.objects.filter(status='Waiting')
+		accepted_results = ModelosResultados.objects.filter(status='Accept')
+		rejected_results = ModelosResultados.objects.filter(status='Reject')
+		data = ModelosResultados._meta.get_fields()
 
 		# get all column field names
 		fields = []
@@ -81,12 +81,12 @@ class AcceptPageView(TemplateView):
 		print real_ids
 
 		for k in range(len(real_ids)):
-			ch = Table1.objects.get(pk=real_ids[k])
+			ch = ModelosResultados.objects.get(pk=real_ids[k])
 			ch.status = 'Accept'
 			ch.save()
 		
 		for j in range(len(real_ids)):
-			results.append(Table1.objects.get(pk=real_ids[j]))
+			results.append(ModelosResultados.objects.get(pk=real_ids[j]))
 
 		return HttpResponseRedirect('/')
 
@@ -103,12 +103,12 @@ class RejectPageView(TemplateView):
 		print real_ids
 
 		for k in range(len(real_ids)):
-			ch = Table1.objects.get(pk=real_ids[k])
+			ch = ModelosResultados.objects.get(pk=real_ids[k])
 			ch.status = 'Reject'
 			ch.save()
 		
 		for j in range(len(real_ids)):
-			results.append(Table1.objects.get(pk=real_ids[j]))
+			results.append(ModelosResultados.objects.get(pk=real_ids[j]))
 
 		print results
 
@@ -123,7 +123,7 @@ class UndoPageView(TemplateView):
 		undo_ids = rudimentaryParser(undo_vals)
 
 		for u in range(len(undo_ids)):
-			und = Table1.objects.get(pk=undo_ids[u])
+			und = ModelosResultados.objects.get(pk=undo_ids[u])
 			und.status = 'Waiting'
 			und.save()
 		return HttpResponseRedirect('/')
@@ -137,7 +137,7 @@ class DeletePageView(TemplateView):
 		delete_ids = rudimentaryParser(delete_vals)
 
 		for d in range(len(delete_ids)):
-			delObj = Table1.objects.get(pk=delete_ids[d])
+			delObj = ModelosResultados.objects.get(pk=delete_ids[d])
 			delObj.delete()
 		return HttpResponseRedirect('/')
 		

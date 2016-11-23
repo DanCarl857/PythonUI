@@ -22,6 +22,9 @@
       success: function(data){
         $('#genericModal').modal('hide');
         location.reload();
+      },
+      error: function(xhr, ajaxOptions, thrownError){
+        location.reload();
       }
     });
   }
@@ -49,6 +52,9 @@
       method: 'get',
       success: function(data){
         $('#genericModal').modal('hide');
+        location.reload();
+      },
+      error: function(xhr, ajaxOptions, thrownError){
         location.reload();
       }
      });
@@ -78,6 +84,9 @@
       success: function(data){
         $('#genericModal').modal('hide');
         location.reload();
+      },
+      error: function(xhr, ajaxOptions, thrownError){
+        location.reload();
       }
     });
   }
@@ -102,6 +111,9 @@
       dataType: 'html',
       success: function(data){
         $('#genericModal').modal('hide');
+        location.reload();
+      },
+      error: function(xhr, ajaxOptions, thrownError){
         location.reload();
       }
     });
@@ -174,6 +186,9 @@
       method: 'get',
       success: function(data){
         $('#genericModal').modal('hide');
+        location.reload();
+      },
+      error: function(xhr, ajaxOptions, thrownError){
         location.reload();
       }
      });
