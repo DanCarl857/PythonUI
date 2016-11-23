@@ -9,12 +9,18 @@
 
     var accepted_vals = JSON.stringify(acceptedVals);
 
+    $('#genericModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+
     $.ajax({
       url: 'http://localhost:8000/accept?vals=' + accepted_vals + '&id=1',
       data: accepted_vals,
       dataType: 'html',
       method:'get',
       success: function(data){
+        $('#genericModal').modal('hide');
         location.reload();
       }
     });
@@ -22,6 +28,11 @@
 
   // PLEASE IGNORE REDUNDANCY.... :-)
   function getRejectedBoxes() {
+      $('#genericModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+
 
      var rejectedVals = [];
 
@@ -37,6 +48,7 @@
       dataType: 'html',
       method: 'get',
       success: function(data){
+        $('#genericModal').modal('hide');
         location.reload();
       }
      });
@@ -132,6 +144,28 @@
   }
 
   function ignoreAll(){
+     $('#genericModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+    var ignoreVals = [];
+
+     $("input[name='accepted_values']:checked").each(function(){
+      ignoreVals.push($(this).val());
+     });
+
+     var ignore_vals = JSON.stringify(ignoreVals);
+
+     $.ajax({
+      url: 'http://localhost:8000/delete?vals=' + ignore_vals,
+      data: ignore_vals,
+      dataType: 'html',
+      method: 'get',
+      success: function(data){
+        $('#genericModal').modal('hide');
+        location.reload();
+      }
+     });
 
   }
 

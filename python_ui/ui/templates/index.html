@@ -111,7 +111,7 @@
             </button>
           </div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" onclick="ignoreAll()">
               IGNORE&nbsp;
               <i style="font-size: 25px; color: white" class="icon ion-ios-trash-outline"></i>
             </button>
@@ -207,7 +207,7 @@
               </button>
             </div>
             <div class="col-sm-4">
-              <button class="btn btn-link" style="color: dodgerblue; font-size: 20px;" onclick="ignoreAll()">
+              <button class="btn btn-link" style="color: dodgerblue; font-size: 20px;">
                 Ignore All&nbsp;
                 <i style="font-size: 25px; color: dodgerblue" class="icon ion-ios-trash-outline"></i>
               </button>
@@ -257,6 +257,7 @@
                 </tbody>
               </table>
 
+              <!--
               <center>
                 <nav aria-label="Page navigation">
                   <ul class="pagination">
@@ -284,6 +285,7 @@
                   </ul>
                 </nav>
               </center>
+              -->
             </div>
         </div>
       </section>
@@ -333,7 +335,7 @@
                 {% endfor %}
               </tbody>
             </table>
-
+            <!--
             <center>
                 <nav aria-label="Page navigation">
                   <ul class="pagination">
@@ -361,6 +363,7 @@
                   </ul>
                 </nav>
               </center>
+              -->
           </div>
         </div>
       </section>
@@ -396,6 +399,17 @@
             <p><img src="{% static 'ui/images/loading.gif' %}"></p>
             <div id="discarding" style="display: none"><p>Discarding changes changes...<p></div>
             <div id="done" style="display: none"><p>Done</p></div>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="genericModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <center>
+            <h4>Processing request...Please wait</h4>
+            <p><img src="{% static 'ui/images/loading.gif' %}"></p>
           </center>
         </div>
       </div>

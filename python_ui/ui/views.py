@@ -127,6 +127,19 @@ class UndoPageView(TemplateView):
 			und.status = 'Waiting'
 			und.save()
 		return HttpResponseRedirect('/')
+
+class DeletePageView(TemplateView):
+
+	def get(self, request, **kwargs):
+
+		delete_vals = request.GET['vals']
+
+		delete_ids = rudimentaryParser(delete_vals)
+
+		for d in range(len(delete_ids)):
+			delObj = Table1.objects.get(pk=delete_ids[d])
+			delObj.delete()
+		return HttpResponseRedirect('/')
 		
 class AboutPageView(TemplateView):
 	template_name = "about.html"
