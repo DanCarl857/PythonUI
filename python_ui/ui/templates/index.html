@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block title %}Simple UI {% endblock %}
 
@@ -103,7 +104,7 @@
             </button>
           </div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-danger" onclick="getRejectedBoxes()">
               REJECT&nbsp;
               <i style="font-size: 20px; color: white" class="icon ion-android-close"></i>
             </button>
@@ -193,18 +194,22 @@
         <div class="centered">
           <div class="row" style="padding: 10px; position: relative; left: 4%;">
             <div class="col-sm-4">
-              <a href="" style="color: green; font-size: 20px;">Commit Changes</a>
-              &nbsp;
-              <i style="font-size: 20px; color: green" class="icon ion-ios-redo"></i>
+              <button class="btn btn-link" style="color: green; font-size: 20px;" onclick="commitChanges()">
+                Commit Changes&nbsp;
+                <i style="font-size: 20px; color: green" class="icon ion-ios-redo"></i>
+              </button>
             </div>
             <div class="col-sm-4">
-              <a href="" style="color: indianred; font-size: 20px;">Discard Changes</a>
-              &nbsp;
-              <i style="font-size: 20px; color: indianred" class="icon ion-android-close"></i>
+              <button class="btn btn-link" style="color: indianred; font-size: 20px;" onclick="discardChanges()">
+                Discard Changes&nbsp;
+                <i style="font-size: 20px; color: indianred" class="icon ion-android-close"></i>
+              </button>
             </div>
             <div class="col-sm-4">
-              <a href="" style="color: dodgerblue; font-size: 20px;">Ignore All</a>&nbsp;
-              <i style="font-size: 25px; color: dodgerblue" class="icon ion-ios-trash-outline"></i>
+              <button class="btn btn-link" style="color: dodgerblue; font-size: 20px;" onclick="ignoreAll()">
+                Ignore All&nbsp;
+                <i style="font-size: 25px; color: dodgerblue" class="icon ion-ios-trash-outline"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -230,7 +235,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for res in results %}
+                {% for res in accepted_results %}
                 <tr>
                   <td scope="row" id="res_check">
                     <div class="checkbox">
@@ -250,14 +255,41 @@
                 {% endfor %}
                 </tbody>
               </table>
+
+              <center>
+                <nav aria-label="Page navigation">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      {% if accepted_results.has_previous %}
+                        <a class="page-link" aria-label="Previous" href="?page={{ accepted_results.previous_page_number }}">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      {% endif %}
+                    </li>
+                    <li class="page-item">
+                      <span class="current">
+                        Page {{ accepted_results.number }} of {{ accepted_results.paginator.num_pages }}
+                      </span>
+                    </li>
+                    <li>
+                      {% if accepted_results.has_next %}
+                        <a class="page-link" aria-label="Next" href="?page={{ accepted_results.next_page_number }}">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </nav>
+              </center>
             </div>
         </div>
       </section>
       <section>
         <div class="row centered" style="padding: 10px; position: relative; left: 45%;">
           <div class="col-sm-4">
-            <i style="font-size: 25px; color: dodgerblue" class="icon ion-reply"></i>
-            <a href="" style="color: dodgerblue; font-size: 20px;">UNDO</a>
+            <button class="btn btn-link" style="color: dodgerblue; font-size: 20px;" onclick="undoAccept()"><i style="font-size: 25px; color: dodgerblue" class="icon ion-reply"></i>&nbsp;UNDO</button>
           </div>
         </div>
       </section>
@@ -280,12 +312,12 @@
               </tr>
               </thead>
               <tbody>
-              {% for obj in rej_objects %}
+              {% for obj in rejected_results %}
                 <tr>
                   <td scope="row">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox">
+                        <input  name="rej_values" value={{ obj.id_modelo }} type="checkbox">
                       </label>
                     </div>
                   </td>
@@ -294,23 +326,78 @@
                   <td>{{ obj.producto }}</td>
                   <td>{{ obj.des_marca }}</td>
                   <td>
-                    <button class="btn btn-warning">Rejected</button>
+                    <button class="btn btn-danger">Rejected</button>
                   </td>
                 </tr>
                 {% endfor %}
               </tbody>
             </table>
+
+            <center>
+                <nav aria-label="Page navigation">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      {% if rejected_results.has_previous %}
+                        <a class="page-link" aria-label="Previous" href="?page={{ rejected_results.previous_page_number }}">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      {% endif %}
+                    </li>
+                    <li class="page-item">
+                      <span class="current">
+                        Page {{ rejected_results.number }} of {{ rejected_results.paginator.num_pages }}
+                      </span>
+                    </li>
+                    <li>
+                      {% if rejected_results.has_next %}
+                        <a class="page-link" aria-label="Next" href="?page={{ rejected_results.next_page_number }}">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </nav>
+              </center>
           </div>
         </div>
       </section>
       <section>
         <div class="row centered" style="padding: 10px; position: relative; left: 45%;">
           <div class="col-sm-4">
-            <i style="font-size: 25px; color: dodgerblue" class="icon ion-reply"></i>
-            <a href="" style="color: dodgerblue; font-size: 20px;">UNDO</a>
+            
+             <button class="btn btn-link" style="color: dodgerblue; font-size: 20px;" onclick="undoRej()"><i style="font-size: 25px; color: dodgerblue" class="icon ion-reply"></i>&nbsp;UNDO</button>
           </div>
         </div>
       </section>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="commitModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <center>
+            <h4>Processing request...Please wait</h4>
+            <p><img src="{% static 'ui/images/loading.gif' %}"></p>
+            <div id="committing" style="display: none"><p>Committing changes...<p></div>
+            <div id="don" style="display: none"><p>Done</p></div>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="discardModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <center>
+            <h4>Processing request...Please wait</h4>
+            <p><img src="{% static 'ui/images/loading.gif' %}"></p>
+            <div id="discarding" style="display: none"><p>Discarding changes changes...<p></div>
+            <div id="done" style="display: none"><p>Done</p></div>
+          </center>
+        </div>
+      </div>
     </div>
 
 {% endblock %}
@@ -318,6 +405,7 @@
 {% block javascript %}
 <script>
 
+  // TODO: Modularize code and write utility functions
   function getAllCheckBoxes(){
 
     var acceptedVals = [];
@@ -329,15 +417,21 @@
     var accepted_vals = JSON.stringify(acceptedVals);
 
     $.ajax({
-      url: 'http://localhost:8000?vals=' + accepted_vals + '&id=1',
+      url: 'http://localhost:8000/accept?vals=' + accepted_vals + '&id=1',
       data: accepted_vals,
       dataType: 'json',
       success: function(data){
-
       }
     });
+
+    console.log("In this function now man");
+    setTimeout(function(){
+      location.reload();
+    }, 10000);
+    
   }
 
+  // PLEASE IGNORE REDUNDANCY.... :-)
   function getRejectedBoxes() {
 
      var rejectedVals = [];
@@ -349,7 +443,7 @@
      var rejected_vals = JSON.stringify(rejectedVals);
 
      $.ajax({
-      url: 'http://localhost:8000/process',
+      url: 'http://localhost:8000/reject?vals=' + rejected_vals + '&id=2',
       data: rejected_vals,
       dataType: 'json',
       success: function(data){
@@ -358,5 +452,96 @@
      });
   }
 
+  function undoAccept(){
+
+    var checkVals = [];
+
+    $("input[name='acc_values']").each(function(){
+      checkVals.push($(this).val());
+    });
+
+
+    var check_vals = JSON.stringify(checkVals);
+    console.log(check_vals);
+
+    $.ajax({
+      url: 'http://localhost:8000/undo?vals=' + check_vals,
+      data: check_vals,
+      dataType: 'json',
+      success: function(data){
+
+      }
+    });
+  }
+
+  function undoRej(){
+
+    var cheVals = [];
+
+    $("input[name='rej_values']").each(function(){
+      cheVals.push($(this).val());
+    });
+
+    var rejected_vals = JSON.stringify(cheVals);
+
+    $.ajax({
+      url: 'http://localhost:8000/undo?vals=' + rejected_vals,
+      data: rejected_vals,
+      dataType: 'json',
+      success: function(data){
+
+      }
+    });
+  }
+
+  function commitChanges(){
+    $('#commitModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+
+    setTimeout(function(){
+      $('#committing').fadeIn();
+    }, 3000);
+
+    setTimeout(function(){
+      $('#don').fadeIn();
+    }, 5000);
+
+    setTimeout(function(){
+      $('#commitModal').modal('hide');
+    }, 8000);
+  }
+
+  function discardChanges(){
+    $('#discardModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+
+    undoAccept();
+
+    setTimeout(function(){
+      $('#discarding').fadeIn();
+    }, 3000);
+
+    undoRej();
+
+    setTimeout(function(){
+      $('#done').fadeIn();
+    }, 5000);
+
+    setTimeout(function(){
+      $('#discardModal').modal('hide');
+    }, 8000);
+
+    setTimeout(function(){
+      location.reload();
+    }, 10000);
+  }
+
+  function ignoreAll(){
+
+  }
 </script>
 {% endblock %}

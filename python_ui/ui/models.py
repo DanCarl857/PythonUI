@@ -36,7 +36,7 @@ class Table1(models.Model):
     timestamp = models.CharField(max_length=20, blank=True, null=True)
     features = models.CharField(max_length=8, blank=True, null=True)
     modelo = models.CharField(max_length=16, blank=True, null=True)
-    status = models.CharField(db_column='Status', max_length=7, blank=True, null=True)  
+    status = models.CharField(db_column='Status', max_length=8, blank=True, null=True)  
 
     class Meta:
         managed = False
