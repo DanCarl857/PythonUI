@@ -36,40 +36,36 @@
             <label for="sel1">Select list:</label>
             <select class="form-control" onchange="filterTable('des',this)" id="sel1">
               <option disabled="" selected=""> Filter by Des Emperesa</option>
-              <option>Daniel</option>
-              <option value="MONDELEZ">MONDELEZ</option>
-              <option>Acceptado</option>
-              <option>Work</option>
+              {% for val in columns_des %}
+              <option value="{{ val }}">{{ val }}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
-            <select class="form-control" id="sel2">
+            <select class="form-control" id="sel2" onchange="filterTable('vendedor',this)">
               <option disabled="" selected=""> Filter by Vendedor</option>
-              <option>Daniel</option>
-              <option>Kevin</option>
-              <option>Acceptado</option>
-              <option>Work</option>
+              {% for vali in columns_vend %}
+              <option value="{{ vali }}">{{ vali }}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
-            <select class="form-control" id="sel3">
+            <select class="form-control" id="sel3" onchange="filterTable('producto',this)">
               <option disabled="" selected=""> Filter by Producto</option>
-              <option>Daniel</option>
-              <option>Kevin</option>
-              <option>Acceptado</option>
-              <option>Work</option>
+              {% for valie in columns_prod %}
+              <option value="{{ valie }}">{{ valie }}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="col-sm-3">
             <label for="sel1">Select list:</label>
-            <select class="form-control" id="sel4">
+            <select class="form-control" id="sel4" onchange="filterTable('marca', this)">
               <option disabled="" selected=""> Filter by Des Marca</option>
-              <option>Daniel</option>
-              <option>Kevin</option>
-              <option>Acceptado</option>
-              <option>Work</option>
+              {% for valies in columns_prod %}
+              <option value="{{ valies }}">{{ valies }}</option>
+              {% endfor %}
             </select>
           </div>
         </div>

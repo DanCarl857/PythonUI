@@ -39,6 +39,10 @@ class HomePageView(TemplateView):
 		query_results = ModelosResultados.objects.filter(status='Waiting')
 		accepted_results = ModelosResultados.objects.filter(status='Accept')
 		rejected_results = ModelosResultados.objects.filter(status='Reject')
+		columns_des = ModelosResultados.objects.vlaues('des_empresa')
+		columns_vend = ModelosResultados.objects.values('vendedor')
+		columns_prod = ModelosResultados.objects.values('producto')
+		columns_marc = ModelosResultados.objects.values('des_marca')
 		data = ModelosResultados._meta.get_fields()
 
 		# get all column field names
