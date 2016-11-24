@@ -41,7 +41,7 @@
      });
 
      var rejected_vals = JSON.stringify(rejectedVals);
-
+     
      $.ajax({
       url: 'http://localhost:8000/reject?vals=' + rejected_vals + '&id=2',
       data: rejected_vals,
